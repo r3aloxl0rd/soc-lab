@@ -6,6 +6,7 @@ Below, I'll comment on the machines, software, vulnerabilities, and the network 
 
 ## Network Design
 The diagram below shows the network generally, including my chosen IP addresses.
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                        HOST (Attacker)                      │
 │                          CachyOS                            │
@@ -40,6 +41,7 @@ The diagram below shows the network generally, including my chosen IP addresses.
           │  │ 192.168.200.111     │   │
           │  └─────────────────────┘   │
           └────────────────────────────┘
+```
 ### Internet / NAT
 This part of the network is where outside attackers usually are (unless they're an insider threat, or are intentionally on the network as part of a white-box penetration test).
 ### DMZ-NET
