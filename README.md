@@ -48,7 +48,7 @@ This part of the network is the internal corporate one. It's cut off from public
 ### Host
 This is my own computer. It resembles the outside attacker, and only has direct visibility into DMZ machine(s).
 ### DVWA -- DMZ-Net Web-App Machine
-Most front-facing services are web applications. I chose the Damn Vulnerable Web Application [DVWA](https://github.com/digininja/DVWA) because it's very vulnerable and can allow a seamless demonstration of different vulnerabilities and exploits, as well as what that would look like on a SIEM. This machine has a Wazuh agent installed, and has a NIC misconfiguration elaborated on further below.
+Most front-facing services are web applications. I chose the Damn Vulnerable Web Application ([DVWA](https://github.com/digininja/DVWA)) because it's purposely vulnerable and thus can allow a seamless demonstration of different vulnerabilities and exploits, as well as what that would look like on a SIEM. This machine has a Wazuh agent installed, and has a NIC misconfiguration elaborated on further below.
 ### Internal 1 -- Internal-Net Employee 1
 This is a poorly-configured Debian machine resembling that of an employee. It was not downloaded pre-built with vulnerabilities. This machine has a Wazuh agent installed.
 ### Wazuh -- DMZ & Internal-Net
@@ -66,12 +66,16 @@ The only specialized piece of software I needed was [BurpSuite](https://portswig
 The vulnerabilities demonstrated in this lab project are well-known, common and easily reproducible. Not every potential attack vector is exploited, as that would exceed the scope of the project; the point is to showcase a straightforward attack path.
 ### File Uploads
 File uploads are a common way to gain a foothold on server-side systems. This is demonstrated on 'DVWA'.
+### sudo Misconfiguration
+`sudo` misconfigurations can lead to many security problems, including allowing privilege escalation, lateral movement, installing unwanted packages, and much more. This is demonstrated on 'DVWA'.
 ### Misconfigured NIC
 A misconfigured NIC can potentially allow dangerous lateral movement and pivoting. This is demonstrated on 'DVWA'.
 ### Anonymous FTP
 File Transfer Protocol (FTP) is a largely deprecated protocol, and yet some may have it in use. In case anonymous login is enabled, it can allow accessing FTP-hosted files without credentials. This is demonstrated on 'Internal 1'.
 ### Weak Passwords
 Weak passwords are the pillar of vulnerabilities. This is demonstrated on 'Internal 1'.
+### Password Reuse
+Reusing passwords across different accounts is another very dangerous vulnerabilities, typically leading to privilege escalation and lateral movement. This is demonstrated on 'Internal 1'.
 
 ## Instructions
 If you wish to recreate this lab environment, or something similar to it, you can follow these general steps:
@@ -85,10 +89,10 @@ I chose [`virt-manager`](https://virt-manager.org/) using QEMU instead of Virtua
 You will need to construct an XML file defining the IP ranges for your networks. Next, define them using `virsh net-define <XML file>` and start them when needed (you can also set them to auto-start).
 When on `virt-manager`, you add a NIC and select the associated network for each machine. However, initially, it is also convenient to add a NAT on alongside the isolated network interface, in order to allow updates and setup your Wazuh agents.
 ### Adding Wazuh 
-Install Wazuh on the VM serving as your SIEM, and add agents using the VM's IP address (it should be on the same network as the machines you wish to monitor). The instructions are simple and displayed on Wazuh itself.
+Install Wazuh on the VM serving as your SIEM, and add agents using the VM's IP address (it should be on the same network as the machines you wish to monitor). The instructions are simple and displayed on Wazuh itself. Moreover, ensure that the log files you desire to read (such as `auth.log` and `access.log`) are both readable as well as able to be framed on Wazuh's dashboard; this can be a tedious process.
 ### Finalizing NICs
 Once all desired Wazuh agents are deployed, updates are installed, and there is no longer a need for Internet access, you can cut off NAT interfaces from your non-public internal machines, by removing the hardware component on `virt-manager`.
 ### Bridging (Informational)
 Your host will have visibility into all machines by default thanks to `libvirt`'s virtual bridges. You can delete some of these virtual bridges to enhance realism.
 ### Final Notes
-Once all machines are properly set up, you can misconfigure them as you please and create your own attack demo. Logs should be collected on Wazuh demonstrating the SOC side.
+Once all machines are properly set up, and logs are accurately reported, you can misconfigure things as you please (such as by modifying `/etc/sudoers`) and create your own attack demo. Logs should be collected on Wazuh demonstrating the SOC side.
