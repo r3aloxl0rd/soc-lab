@@ -75,7 +75,7 @@ File Transfer Protocol (FTP) is a largely deprecated protocol, and yet some may 
 ### Incorrect Information Storage
 When sensitive information is stored without proper security, it can allow unwanted access and break confidentiality. For example, storing passwords in plaintext files. This is demonstraed on 'Internal 1'.
 ### Weak Passwords
-Weak passwords are the pillar of vulnerabilities. This is demonstrated on 'Internal 1'.
+Weak passwords are the pillar of vulnerabilities. This is demonstrated on both 'DVWA' and 'Internal 1'.
 ### Password Reuse
 Reusing passwords across different accounts is another very dangerous vulnerabilities, typically leading to privilege escalation and lateral movement. This is demonstrated on 'Internal 1'.
 
