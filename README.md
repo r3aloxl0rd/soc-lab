@@ -91,10 +91,10 @@ I chose [`virt-manager`](https://virt-manager.org/) using QEMU instead of Virtua
 You will need to construct an XML file defining the IP ranges for your networks. Next, define them using `virsh net-define <XML file>` and start them when needed (you can also set them to auto-start).
 When on `virt-manager`, you add a NIC and select the associated network for each machine. However, initially, it is also convenient to add a NAT on alongside the isolated network interface, in order to allow updates and setup your Wazuh agents.
 ### Adding Wazuh 
-Install Wazuh on the VM serving as your SIEM, and add agents using the VM's IP address (it should be on the same network as the machines you wish to monitor). The instructions are simple and displayed on Wazuh itself. Moreover, ensure that the log files you desire to read (such as `auth.log` and `access.log`) are both readable as well as able to be framed on Wazuh's dashboard; this can be a tedious process.
+If using Wazuh, install it on the VM serving as your SIEM server, and add agents using the VM's IP address (it should be on the same network as the machines you wish to monitor). The instructions are simple and displayed on Wazuh itself. Moreover, ensure that the log files you desire to read (such as `auth.log` and `access.log`) are both readable as well as able to be framed on Wazuh's dashboard; this can be a tedious process and might require adding custom rules.
 ### Finalizing NICs
 Once all desired Wazuh agents are deployed, updates are installed, and there is no longer a need for Internet access, you can cut off NAT interfaces from your non-public internal machines, by removing the hardware component on `virt-manager`.
 ### Bridging (Informational)
 Your host will have visibility into all machines by default thanks to `libvirt`'s virtual bridges. You can delete some of these virtual bridges to enhance realism.
 ### Final Notes
-Once all machines are properly set up, and logs are accurately reported, you can misconfigure things as you please (such as by modifying `/etc/sudoers`) and create your own attack demo. Logs should be collected on Wazuh demonstrating the SOC side.
+Once all machines are properly set up, and logs are accurately reported, you can misconfigure things as you please (such as by modifying `/etc/sudoers`) and create your own attack demo. Logs should be collected on your chosen SIEM demonstrating the SOC side.
