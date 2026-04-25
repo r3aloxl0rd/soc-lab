@@ -19,7 +19,7 @@ We can see there's an open HTTP port leading to the DVWA login page.
 <img width="490" height="492" alt="Screenshot_20260424_233227" src="https://github.com/user-attachments/assets/ec9b9f02-505d-4fcb-9718-6bdbcca343e6" />
 
 There's also an open SSH port, and an attacker can begin brute-forcing credentials, but that is usually inefficient and risky when you don't even possess a username to try.
-However, brute-forcing a web-app login page is more realistic, especially since you might get in through other methods like SQL Injection.
+However, trying credentials on a web-app login page is more realistic, especially since you might get in through other methods like SQL Injection.
 Trying out a few different basic combinations, like `admin:admin` and `root:toor`, we land on the correct one: `admin:password`!
 
 Now, we can see multiple different potentially-exploitable avenues. The most interesting one is File Upload.
