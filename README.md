@@ -60,7 +60,7 @@ I chose a mix of [Debian](https://www.debian.org/) and [Ubuntu](https://ubuntu.c
 ### SIEM
 Wazuh was chosen because it's open-source, advanced, and easy to setup.
 ### Attacking Software
-The only specialized piece of software I needed was [BurpSuite](https://portswigger.net/burp), in order to manipulate requests made to the DVWA machine. Otherwise, I did not need any specialized software to find out vulnerabilities or exploit them.
+The only specialized piece of software I needed was [Burp Suite](https://portswigger.net/burp), in order to manipulate requests made to the DVWA machine. Otherwise, I did not need any specialized software to find out vulnerabilities or exploit them.
 
 ## Vulnerabilities
 The vulnerabilities demonstrated in this lab project are well-known, common and easily reproducible. Not every potential attack vector is exploited, as that would exceed the scope of the project; the point is to showcase a straightforward attack path.
@@ -72,6 +72,8 @@ File uploads are a common way to gain a foothold on server-side systems. This is
 A misconfigured NIC can potentially allow dangerous lateral movement and pivoting. This is demonstrated on 'DVWA'.
 ### Anonymous FTP
 File Transfer Protocol (FTP) is a largely deprecated protocol, and yet some may have it in use. In case anonymous login is enabled, it can allow accessing FTP-hosted files without credentials. This is demonstrated on 'Internal 1'.
+### Incorrect Information Storage
+When sensitive information is stored without proper security, it can allow unwanted access and break confidentiality. For example, storing passwords in plaintext files. This is demonstraed on 'Internal 1'.
 ### Weak Passwords
 Weak passwords are the pillar of vulnerabilities. This is demonstrated on 'Internal 1'.
 ### Password Reuse
