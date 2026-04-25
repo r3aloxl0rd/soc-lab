@@ -43,7 +43,7 @@ Only now do we find a `GET` request explicitly showing `php-reverse-shell.php` w
 
 <img width="1376" height="446" alt="image" src="https://github.com/user-attachments/assets/635f5b3b-98b4-45e3-bb8a-e92616f24a32" />
 
-This demonstrates that log ingestion timings can throw off an analyst's ability to sequentially order events. Nevertheless, it's quite clear now that somebody executed a shell, installed `nmap`, and is probably planning to begin lateral movement. That said, there is no log for the command `ip a` since it's not inherently associated with any log file we registered.
+This demonstrates that log ingestion timings can throw off an analyst's ability to sequentially order events. Nevertheless, it's quite clear now that somebody executed a shell, installed `nmap`, and is probably planning to begin lateral movement. That said, there is no log for the command `ip a` since it's not associated with any log file we registered.
 
 Soon after, we see a log for our `ftp` command:
 
