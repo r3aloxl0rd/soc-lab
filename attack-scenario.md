@@ -86,6 +86,8 @@ Now, we can try out that SSH port. But, before doing that, we should upgrade our
 
 And we are officially inside the internal network! We can try escalating privileges by seeing if `root` also has the same password as `john`, and for this lab, it does.
 
+<img width="228" height="115" alt="image" src="https://github.com/user-attachments/assets/d82caf94-83c7-4104-873a-6ceedbe92446" />
+
 Further pivoting should be straightforward from here on out, depending on what other internal machines are visible from our current pivot point.
 
 # Actions on Objectives
