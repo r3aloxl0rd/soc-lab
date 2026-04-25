@@ -10,7 +10,6 @@ The diagram below shows the network generally, including my chosen IP addresses.
 ┌─────────────────────────────────────────────────────────────┐
 │                        HOST (Attacker)                      |
 |                     192.168.100.1                           |
-|                     192.168.200.1                           │
 │                          CachyOS                            │
 └───────────────────────┬─────────────────────────────────────┘
                         │
