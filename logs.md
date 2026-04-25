@@ -1,14 +1,14 @@
 # Logs
 In this file, I showcase what the logs over on Wazuh showed and didn't show during each major phase of the attack.
-## Setup
-The setup for the logs was pretty straightforward. The relevant log files tracked were: auth.log (for SSH), access.log (for Apache), dpkg.log (for DEB packages), and vsftpd.log (for FTP). No other log files were aggregated from other sources, and Wazuh served as a single glass panel. This means anything not properly displayed on Wazuh would be missed from the SOC side, showing the potential danger in relying on one centralized dashboard that assumes full visibility.
+# Setup
+The setup for the logs was pretty straightforward. The relevant log files tracked were: `auth.log` (for SSH), `access.log` (for Apache), `dpkg.log` (for DEB packages), and `vsftpd.log` (for FTP). No log files were aggregated from other sources, and Wazuh served as a single pane of glass. This means anything not properly displayed on Wazuh would be missed from the SOC side, showing the potential danger in relying on one centralized dashboard that assumes full visibility.
 
 # NMAP
 When performing a basic scan of our DVWA host, no logs were generated. This is because these logs will necessitate a network-based logging solution like Suricata, which many corporations lack.
 Although someone scanning your server isn't necessarily harmful or needs a defensive reaction, it can indicate a potential attacker. That said, harmless scans are nearly impossible to differentiate from harmful ones because of the amount of network traffic popular websites receive.
 
 # DVWA: Dictionary Attack and File Upload
-Upon requesting the DVWA login page and beginning to try a few common password combinations, we can see our Wazuh events page displaying the following:
+Upon requesting the DVWA login page and beginning to try a few common credential combinations, we can see our Wazuh events page displaying the following:
 
 <img width="783" height="400" alt="image" src="https://github.com/user-attachments/assets/08e7d854-3e20-4714-8288-41a76c0fa999" />
 
