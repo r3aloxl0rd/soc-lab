@@ -48,7 +48,7 @@ This part of the network is the internal corporate one. It's cut off from public
 ### Host
 This is my own computer. It resembles the outside attacker, and only has direct visibility into DMZ machine(s).
 ### DVWA -- DMZ-Net Web-App Machine
-Most front-facing services are web applications. I chose the Damn Vulnerable Web Application ([DVWA](https://github.com/digininja/DVWA)) because it's purposely vulnerable and thus can allow a seamless demonstration of different vulnerabilities and exploits, as well as what that would look like on a SIEM. This machine has a Wazuh agent installed, and has a NIC misconfiguration elaborated on further below.
+Most front-facing services are web applications. I chose the Damn Vulnerable Web Application ([DVWA](https://github.com/digininja/DVWA)) because it's purposely vulnerable and thus can allow a seamless demonstration of different vulnerabilities and exploits, as well as what that would look like on a SIEM. This machine has a Wazuh agent installed, and has a NIC misconfiguration elaborated on further below. Its security level was set at 'Medium.'
 ### Internal 1 -- Internal-Net Employee 1
 This is a poorly-configured Debian machine resembling that of an employee. It was not downloaded pre-built with vulnerabilities. This machine has a Wazuh agent installed.
 ### Wazuh -- DMZ & Internal-Net
